@@ -13,18 +13,9 @@ import java.util.Arrays;
 
 @SpringBootTest
 class SpringIoCDemoApplicationTests {
-	@Autowired
-	private CustomerService customerService;
-	
-	@MockBean
-	private ICustomerRepo customerRepo; 
 	
 	@Test
 	void contextLoads() {
-		Mockito.when(customerRepo.getAllCustomers()).thenReturn(Arrays.asList(new Customer("F","L","E","T")));
-				
-		int count= customerService.countCustomers();
-		assertThat(count, is(1));
 	}
 
 }

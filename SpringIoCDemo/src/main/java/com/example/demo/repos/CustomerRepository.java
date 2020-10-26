@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import com.example.demo.Customer;
 import com.example.demo.ICustomerRepo;
 
-public class CustomerRepositoryA implements ICustomerRepo {
+public class CustomerRepository {
 	private List<Customer> customers= 
 			Arrays.asList(
                     new Customer("Dominik", "Lübbers", "dom@luebbers.net", "01234"),
