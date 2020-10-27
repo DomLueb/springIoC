@@ -8,6 +8,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+import com.example.demo.notifiers.INotifier;
+import com.example.demo.notifiers.Notifier;
 import com.example.demo.repos.CustomerRepositoryA;
 
 import java.util.Collection;
@@ -18,10 +20,12 @@ public class AppRunner implements CommandLineRunner {
 
 	private static final Logger logger = LoggerFactory.getLogger(AppRunner.class);
 	private final ICustomerRepo customerRepository;
-	
+	private final INotifier notifier;
+
 	@Autowired
-	public AppRunner(ICustomerRepo customerRepository) {
+	public AppRunner(ICustomerRepo customerRepository, INotifier notifier) {
 		this.customerRepository= customerRepository;
+		this.notifier= notifier;
 	}
 
 	@Override
@@ -30,6 +34,7 @@ public class AppRunner implements CommandLineRunner {
 		
 		Collection<Customer> customers= customerRepository.getAllCustomers();
 		this.printCustomers(customers);
+		this.notifyCustomers(customers);
 	}
 	
 	private void printCustomers(Collection<Customer> customers) {
@@ -37,7 +42,7 @@ public class AppRunner implements CommandLineRunner {
 	}
 	
 	private void notifyCustomers(Collection<Customer> customers) {
-		// Ihre Aufgabe
+		customers.forEach(customer -> notifier.sendNotification(customer));
 	}
 	
 
