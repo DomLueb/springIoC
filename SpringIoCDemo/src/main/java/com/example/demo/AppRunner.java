@@ -21,7 +21,8 @@ public class AppRunner implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		logger.info("Welcome to the Spring universe");
-		
+
+		var customerRepository = new CustomerRepository();
 		Collection<Customer> customers= customerRepository.getAllCustomers();
 		this.printCustomers(customers);
 	}

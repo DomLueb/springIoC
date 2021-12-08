@@ -6,7 +6,6 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.example.demo.Customer;
-import com.example.demo.ICustomerRepo;
 
 public class CustomerRepository {
 	private List<Customer> customers= 
